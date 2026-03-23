@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes Risk Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">Clinical Decision Support</p>
+        <h1>Diabetes Risk Assessment Interface</h1>
+        <p class="hero__text">
+          A professional web interface for submitting patient metrics to your FastAPI machine
+          learning model and receiving an immediate diabetes prediction result.
+        </p>
+        <div class="hero__meta">
+          <div class="meta-card">
+            <span class="meta-card__label">API Endpoint</span>
+            <span class="meta-card__value">POST /diabetes_prediction</span>
+          </div>
+          <div class="meta-card">
+            <span class="meta-card__label">Documentation</span>
+            <span class="meta-card__value">/docs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__panel">
+        <div class="status-card">
+          <div class="status-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img">
+              <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.12 7.53l-4.72 5.9a1 1 0 01-1.5.08l-2.02-2.02a1 1 0 111.41-1.41l1.23 1.22 4-5a1 1 0 111.6 1.23z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="status-card__title">Model Ready</p>
+            <p class="status-card__text">Prepared for secure form submission and response display.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <section class="panel panel--form">
+        <div class="panel__header">
+          <h2>Patient Input</h2>
+          <p>Provide the eight clinical values required by the prediction model.</p>
+        </div>
+
+        <form id="prediction-form" class="form-grid">
+          <label class="field">
+            <span>Pregnancies</span>
+            <input type="number" name="Pregnancies" min="0" step="1" required />
+          </label>
+
+          <label class="field">
+            <span>Glucose</span>
+            <input type="number" name="Glucose" min="0" step="1" required />
+          </label>
+
+          <label class="field">
+            <span>Blood Pressure</span>
+            <input type="number" name="BloodPressure" min="0" step="1" required />
+          </label>
+
+          <label class="field">
+            <span>Skin Thickness</span>
+            <input type="number" name="SkinThickness" min="0" step="1" required />
+          </label>
+
+          <label class="field">
+            <span>Insulin</span>
+            <input type="number" name="Insulin" min="0" step="1" required />
+          </label>
+
+          <label class="field">
+            <span>BMI</span>
+            <input type="number" name="BMI" min="0" step="0.1" required />
+          </label>
+
+          <label class="field">
+            <span>Diabetes Pedigree Function</span>
+            <input type="number" name="DiabetesPedigreeFunction" min="0" step="0.001" required />
+          </label>
+
+          <label class="field">
+            <span>Age</span>
+            <input type="number" name="Age" min="0" step="1" required />
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="button button--primary">Run Assessment</button>
+            <button type="reset" class="button button--secondary">Clear Form</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="panel panel--result">
+        <div class="panel__header">
+          <h2>Assessment Result</h2>
+          <p>The response from the API will appear here after submission.</p>
+        </div>
+
+        <div id="result-card" class="result-card result-card--idle">
+          <p class="result-card__label">Current Status</p>
+          <h3 id="result-title">Awaiting submission</h3>
+          <p id="result-text">
+            Complete the form and submit it to receive the model prediction.
+          </p>
+        </div>
+
+        <div class="info-list">
+          <div class="info-list__item">
+            <h3>Use Case</h3>
+            <p>Designed for clean demonstration, client presentations, and deployment portfolios.</p>
+          </div>
+          <div class="info-list__item">
+            <h3>Response Format</h3>
+            <p>Displays the returned prediction message from the API in a polished interface.</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

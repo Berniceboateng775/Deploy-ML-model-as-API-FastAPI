@@ -1,5 +1,4 @@
 from pathlib import Path
-import json
 import pickle
 
 from fastapi import FastAPI
@@ -9,8 +8,8 @@ from pydantic import BaseModel
 
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "diabetes_model.sav"
-STATIC_DIR = BASE_DIR / "static"
+MODEL_PATH = BASE_DIR / "model" / "diabetes_model.sav"
+STATIC_DIR = BASE_DIR / "model" / "static"
 
 app = FastAPI(
     title="Diabetes Prediction API",
@@ -48,19 +47,17 @@ def health_check():
 
 @app.post("/diabetes_prediction")
 def diabetes_prediction(input_parameters: ModelInput):
-    input_data = input_parameters.json()
-    input_dictionary = json.loads(input_data)
+    input_list = [
+        input_parameters.Pregnancies,
+        input_parameters.Glucose,
+        input_parameters.BloodPressure,
+        input_parameters.SkinThickness,
+        input_parameters.Insulin,
+        input_parameters.BMI,
+        input_parameters.DiabetesPedigreeFunction,
+        input_parameters.Age,
+    ]
 
-    preg = input_dictionary["Pregnancies"]
-    glu = input_dictionary["Glucose"]
-    bp = input_dictionary["BloodPressure"]
-    skin = input_dictionary["SkinThickness"]
-    insulin = input_dictionary["Insulin"]
-    bmi = input_dictionary["BMI"]
-    dpf = input_dictionary["DiabetesPedigreeFunction"]
-    age = input_dictionary["Age"]
-
-    input_list = [preg, glu, bp, skin, insulin, bmi, dpf, age]
     prediction = diabetes_model.predict([input_list])
 
     if prediction[0] == 0:
