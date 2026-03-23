@@ -1,7 +1,7 @@
 import json
 import requests
 
-url = 'http://127.0.0.1:8000/diabetes_prediction'
+url = ' https://unevidenced-goodheartedly-aliana.ngrok-free.dev/diabetes_prediction'
 
 # Sample data to test the API
 input_data = {
