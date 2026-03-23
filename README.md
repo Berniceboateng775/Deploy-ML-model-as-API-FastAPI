@@ -39,6 +39,7 @@ This repository contains a production-ready implementation of a Machine Learning
    - The server will run at `http://127.0.0.1:8000`
    - Open `http://127.0.0.1:8000/docs` to test the endpoints via the interactive Swagger UI.
    - Public url using ngrok ` https://unevidenced-goodheartedly-aliana.ngrok-free.dev/diabetes_prediction`
+   - Hosted app : ` https://diabetes-predictor-64wt.onrender.com/ `
 
 ## Project Structure
 - `main.py`: The entry point of the application containing API routes.
